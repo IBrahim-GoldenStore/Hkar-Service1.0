@@ -1,0 +1,39 @@
+{% load static %}
+{% include './include/header.html' %}
+
+<section class="global">
+
+<!--  A propos de nous -->
+    <p class="infos_title">À Propos de nous</p>
+        <div class="golden_info">
+            <p> <span>H.kar-Service</span> est votre tout nouvel service d'achat en ligne. Plus besion de vous déplacez, effectuez vos achats depuis notre plateforme et faites vous livrez à domicile.</p>
+        </div>
+
+<!-- Nous contactez -->
+    <h3 style="text-align:left;width: 100%;margin-top: 10px;">Avis des utilisateurs</h3>
+    <div class="avis">
+        {% if avis %}
+        {% for avi in avis %}
+            <div>
+                <p>{{ avi.nom }} :</p>
+                <p>{{ avi.message }}</p><br>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Aucun avis</p>
+        {%endif%}
+    </div>
+    <div class="msg_form">
+        <form method="post" >
+            {% csrf_token %}
+            {{ form }}    
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+<a href="{% url 'store:index' %}" style="text-decoration: none;color: red;font-weight: bold;"> Retour</a>
+
+</section>
+<footer>Tout droits réservée</footer>
+
+{% include './include/end.html' %}

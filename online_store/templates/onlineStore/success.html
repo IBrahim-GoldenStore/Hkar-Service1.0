@@ -1,0 +1,10 @@
+{% include './include/header.html' %}
+{% load static %}
+
+    <div class="success_img">
+        <img src="{% static 'onlineStore/icone/valid3.png' %}">
+        <p>Achats effectuez avec succès <br> <span>Nous vous concacterons dans sous peu!!</span></p>
+        <a href="{% url 'store:index' %}">Retour</a>
+    </div>
+
+{% include './include/end.html' %}

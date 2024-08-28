@@ -1,0 +1,45 @@
+{% load static %}
+{% include './include/header.html' %}
+
+<section class="panier">
+    <p class="panier_title">Panier d'achat</p>
+
+    {% if panier %}
+        {% for pan in panier %}
+            <div class="items">
+                <div class="item_content">
+                    <h1>{{ pan.name|truncatechars:9 }}</h1>
+                </div>
+                <div class="price">
+                    <p>{{ pan.quantity }}</p>
+                    <p>Prix: {{ pan.price }}</p>
+                </div>
+                <div class="item_links">
+                    <a href="{% url 'store:plus' pan.id %}"><img src="{% static 'onlineStore/icone/chariot.png' %}" alt=""></a>
+                    <a href="{% url 'store:moins' pan.id %}"><img src="{% static 'onlinestore/icone/suppression.png' %}" alt=""></a>
+                    <p><a href="{% url 'store:supprimer' pan.id %}">Supprimer</a></p>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+
+        <br>
+        <p class="panier_text">Montant: {{montant}} XFOX</p>
+        <br>
+        <div class="form_box">
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn" type="submit" >Soumettre</button><br>
+                <input type="checkbox"  id="check" checked disabled>
+                <label for="check">Payement à la livraison(via OrangeMoney)</label>
+            </form>
+        </div>   
+        <button class="form_btn">Effectuer la commande</button>
+    {% else %}
+        <p class="panier_text">Aucune panier disponible</p>
+    {% endif %}
+    <br>
+    <a href="{% url 'store:index' %}" class="link">Acceuil</a>
+</section>
+{% include './include/end.html' %}

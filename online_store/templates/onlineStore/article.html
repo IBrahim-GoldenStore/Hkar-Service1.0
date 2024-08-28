@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'onlineStore/style.css' %}">
+    <title>H.kar-Service | {{article.name}}</title>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">H.kar-Service</div>
+        <div class="menu-bar"></div>
+        <nav>
+            <a href="{% url 'store:index' %}">Accueil</a>
+            <a href="{% url 'store:panier' %}">Panier</a>
+            {% if user.is_authenticated  %}
+                <a href="{% url 'account:logout' %}">Déconnexion</a>
+            {% else %}
+                <a href="{% url 'account:login' %}">Connexion</a>
+            {% endif %}                
+        </nav>
+    </header>
+
+    <section class="item-base">
+
+        <div class="item">          
+            {% if article.image %}
+            <div class="image-box">          
+                <img src="{{ article.image.url }}" alt="">
+                {% if  article.image1 %}
+                <img src="{{ article.image1.url }}" alt="">
+                {% endif %}
+                {% if  article.image2 %}
+                <img src="{{ article.image2.url }}" alt="">
+                {% endif %}
+                {% if  article.image3 %}
+                <img src="{{ article.image3.url }}" alt="">
+                {% endif %}
+            </div>
+            {% endif %}
+            <div>
+                <h2 style="font-size: 30px;margin-bottom: 20px;color: #ffe100;">{{ article.name }}</h2>
+                <span>{{ article.price }} FCFA</span>
+                <p>Couleurs: {{article.color}}</p> 
+                <div class="info-box" style="margin: 5px;">
+                    <a href="{% url 'store:ajout' article.id %}">Ajouter au panier</a>{% if user.is_authenticated %}| <button class="form_btn2" style="font-size: 17px;height: fit-content;"> Acheter</button>{% endif %}
+                </div>
+            </div><hr>
+            <h3 style="margin-top: 15px;">Description</h3><br>
+            <p>{{ article.description }}.</p>
+        </div>
+
+        <div class="form_box">
+            <form method="post" class="form2" onsubmit="return getmap2()">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn" type="submit" >Soumettre</button><br>
+                <input type="checkbox"  id="check" checked disabled>
+                <label for="check">Payement à la livraison(via OrangeMoney)</label>
+            </form>
+        </div>   
+    </section>
+<script src="{% static 'onlineStore/scripts.js' %}"></script>
+</body>
+</html>

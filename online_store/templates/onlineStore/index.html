@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'onlineStore/style.css' %}">
+    <title>H.kar-Service</title>
+</head>
+<body>
+
+    <header>
+        <div class="logo">H.kar-Service</div>
+        <div class="menu-bar"></div>
+            <div class="search-bar">
+                <form method="get" action="{% url 'store:index' %}" class="index-form"> <!-- formulaire necessaire pour recuprerez le valeur notez qu'ici nous avons le method get -->
+                    <input type="search" name="contain" placeholder="Recherche......">
+                    <button type="submit"><img src="{% static 'onlineStore/icone/search.png' %}"></button>
+                </form>
+            </div>
+        <nav>
+            <a href="">Accueil</a>
+            <a href="{% url 'store:panier' %}">Panier</a>
+            {% if user.is_authenticated  %}
+                <a href="{% url 'account:logout' %}">Déconnexion</a>
+            {% else %}
+                <a href="{% url 'account:login' %}">Connexion</a>
+            {% endif %}                
+            <a href="{% url 'store:prods' %}">Articles</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="category-box">
+            <p>Catégorie</p>
+            <div class="category-bar">
+                <p class="scroll"></p>
+                {% for categorie in category %}
+                 <a href="{% url 'store:trend' categorie.name %}">
+                    <div style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url({{categorie.image.url}});"><span>{{categorie.name}}</span></div>
+                </a> 
+                {% endfor %}                     
+                <p class="scroll_next"></p>
+            </div>
+        </section>
+        <h2 style="margin: 10px 10px 0px;">Tendances:</h2>
+
+        <!-- Recuperation et traitements des produits -->
+        {% if produit_list %}
+        {% for categorie in category_list %}
+            <section class="trend-box">
+                <p>{{categorie.name}}</p>
+                <div class="trend-bar">
+                    {% for produit in produit_list %}
+                    {% if categorie.name == produit.category.name %}
+                    {% if produit.top_category == 1 %}
+                        <div class="trend-bar-div">
+                            <a class="produit-img" href="{% url 'store:article' produit.slug %}"><img src="{{ produit.image.url }}" alt=""></a>
+                            <section class="trend-info">
+                                <div>
+                                    <a href="{% url 'store:article' produit.slug %}">{{ produit.name }}</a>
+                                    <span>{{ produit.price }} FCFA</span>    
+                                </div>
+                                <a class="panier-img" href="{% url 'store:ajout' produit.id %}"><img src="{% static 'onlineStore/icone/panier.png' %}" alt=""></a>
+                            </section>
+                        </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>  
+            </section>
+        {% endfor %}
+        {% else %}
+            <p style="min-height: 60vh;">Articles non disponibles</p>
+        {% endif %}
+
+    </main>
+<script src="{% static 'onlineStore/scripts.js' %}"></script>
+<footer>
+    Retrouvez-nous sur:
+    <div class="external-link">
+        {% for lien in liens %}
+        {%if lien %}
+            <p>{{lien.name}} : <a href="{{lien.url}}">{{lien.url|truncatechars:20}}</a></p>
+        {% endif %}
+        {% endfor %}  
+    </div>
+    <a href="{% url 'account:cont' %}" style="text-align: center; color: #999;width: 100%;display: block;margin-top: 5px;">À propos de nous</a>
+</footer>
+
+</body>
+</html>

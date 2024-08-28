@@ -1,0 +1,22 @@
+{% include './include/header.html' %}
+
+    
+    <h1 class="account_title">H.kar Service</h1>
+    <h4>Connexion</h4>
+    <div class="formulaire">
+        {% for message in messages  %}
+            <div class="error">{{ message }}</div>
+        {% endfor %}
+        <form method="post" class="form">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {{ form }}
+            <input type="submit" value="Se Connectez" class="input1">
+        </form>
+        <div class="register">
+        <p>Vous n'avez pas de compte?</p>
+        <a href="{% url 'account:register' %}">Inscrivez-vous!!</a>
+        </div>
+    </div>
+
+{% include './include/end.html' %}

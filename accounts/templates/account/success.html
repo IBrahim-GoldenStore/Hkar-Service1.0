@@ -1,0 +1,10 @@
+{% include './include/header.html' %}
+{% load static %}
+
+    <div class="success_img">
+        <img src="{% static 'account/icone/validation.png' %}">
+        <p>Inscription Reussie🎉</p>
+        <a href="{% url 'store:index' %}">Retour</a>
+    </div>
+
+{% include './include/end.html' %}
