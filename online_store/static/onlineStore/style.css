@@ -63,7 +63,8 @@ header{
 .logo{
     font-size: 25px;
     font-weight: bold;
-    color: #ffe836;
+    /* color: #ffe836; */
+    color: #000000;
 }
 .index-form{
     display: flex;
