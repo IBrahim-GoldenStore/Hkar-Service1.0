@@ -1,0 +1,743 @@
+/* couleur : #8a2be2,#bf6bff,#ffc0cb,#d8b4ff,#e6ccff */
+@font-face {
+    font-family:'QwitcherGrypen';
+    src: url(fonts/QwitcherGrypen-Regular.ttf);
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url(fonts/Montserrat-Regular.ttf);
+}
+@font-face {
+    font-family: 'Montserrat2';
+    src: url(fonts/Montserrat-Medium.ttf);
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url(fonts/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(fonts/Poppins-Regular.ttf);
+}
+body{
+    font-family: "Montserrat";
+    background-color: #f1f1f1;
+    padding: 3%;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    width: 100%;
+    height: 60px;
+    background-color: #f7f4f4;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: start;
+}
+.global{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+.logo{
+    display: flex;
+    color: #ffe30bec;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+.logo h1:first-child{
+    transform: rotate(-20deg);
+}
+.logo h1:nth-child(7){
+    transform: rotate(10deg);
+}
+.nav{
+    display: flex;
+    align-items: center;
+}
+.links{
+    display: flex;
+}
+.links a{
+    font-size: 20px;
+    font-family: "Montserrat";
+    text-decoration: none;
+    padding: 8px;
+    margin-left: 10px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    color: #006eff;
+}
+.links p{
+    font-size: 20px;
+    font-family: "Montserrat";
+    text-decoration: none;
+    padding: 8px;
+    margin-left: 10px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    color: #006eff;
+}
+
+.links a:hover{
+    transition: .6s;
+    background-color: #ffea4db0;
+    border-radius: 22px;
+}
+/*recents*/
+ #id_username_helptext,#id_password_helptext,#id_password2_helptext{
+    display: none;
+}
+.helptext{
+    font-size: 12px;
+    color:#9a28b1;
+    text-align: left;
+    margin-bottom: 2px;
+}
+.visibility-password{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.visibility-password > img{
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    align-self: start;
+    margin-top: 70px;
+}
+.visibility-password.login > img{
+    margin-top: 30px;
+}
+.form{
+    text-align: center;
+}
+.form div input{
+    margin-bottom: 15px;
+    font-family: "Montserrat";
+    border: #863154 solid 1px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    padding: 3px;
+    transition: .5s;
+}
+.form div input:focus{
+    border: #9a28b1 solid 1px;
+    transform:  scale(1.05);
+}
+.input1{
+    font-family: "Montserrat2";
+    padding: 8px;
+    margin: 20px 0;
+    border-radius: 10px;
+    background-color: #adf0d1;
+    font-size: 16px;
+    border: none;
+    transition: .5s;
+}
+.formulaire2 a{
+    margin-right: 30px;
+    color: #0066ff;
+    font-size: 20px;
+    text-decoration: 0;
+}
+/*recents*/
+ /* Profil.html */
+ .main-profil{
+    background: #f1f1f1;
+    margin-bottom:20px;
+ }
+.main-profil > h1{
+    text-align: center;
+    font-size: 30px;
+    color: #2C3E50;
+    margin-bottom:10px;
+}
+.profil-links{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.profil-avatar{
+    display:flex;
+    font-family:sans-serif;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:20px;
+}
+.profil-avatar > h1{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:200px;
+    width:200px;
+    background-color:#adf0d1;
+    border-radius: 50%;
+    font-size: 40px;
+}
+.profil-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5%;
+    flex-direction: column;
+    gap: 20px;
+}
+.profil-elements{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.profil-elements > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.profil-elements > div p{
+    /* font-weight: bold; */
+    color: #2C3E50;
+    font-size: 18px;
+}
+.profil-elements > div span{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0px 5px;
+}
+.profil-links div{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.profil-links div a{
+    width: fit-content;
+}
+.profil-links p{
+    font-size: 20px;
+    color: #2C3E50;
+}
+.pop-up{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pop-up > div{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f3f4;
+    width: 300px;
+    height: 420px;
+    position: absolute;
+    top: 80px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.pop-up > div main{
+    margin-top: 10px;
+    height: 360px;
+    font-size: 13px;
+    color: #2C3E50;
+    /* text-align: center; */
+    font-weight: bolder;
+}
+.pop-up > div main > p{
+    margin-top: 2px;
+}
+.pop-up > div main > span{
+    color: #ff3131;
+}
+.pop-up > div > span{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #2C3E50; */
+    margin-right: 10px;
+    align-self: flex-end;
+    position: relative;
+    cursor: pointer;
+}
+.pop-up > div main > div{
+    text-align: center;
+}
+.pop-up > div main > div p{
+    color: #000000;
+}
+.pop-up > div > span::after{
+    content: '';
+    display: block;
+    width: 15px;
+    height: 2px;
+    background-color: rgba(0,0,0,0.9);
+    transform: rotate(45deg);
+    position: absolute;
+}
+.pop-up > div > span::before{
+    content: '';
+    display: block;
+    width: 15px;
+    height: 2px;
+    background-color: rgba(0,0,0,0.9);
+    transform: rotate(-45deg);
+}
+@media screen and (max-width:574px) {
+    .profil-elements{
+        flex-wrap: wrap;
+        font-size: 17px;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+    .profil-links p{
+        font-size: 16px;
+    }
+    .profil-links > div a{
+        font-size: 15px;
+    }
+}
+@media  screen and (max-width:375px) {
+    .profil-elements > div p{
+        font-size: 15px;
+    }
+}
+/*profil.html*/
+.infos_title{
+    font-size: 60px;
+    margin-bottom: 40px;
+
+}
+.form div label{
+    display: none;
+}
+.account_title{
+    font-size: 100px;
+    color: #000000;
+    text-align: center;
+}
+.golden_info span{
+    font-size: 30px;
+    color: #ffe62b;
+    font-weight: bold;
+}
+.golden_info{
+    font-size: 20px;
+    letter-spacing: 0.55px;
+    margin-bottom: 20px;
+}
+.msg_form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+.name{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.name a{
+    font-size: 13px;
+    margin-left: 5px;
+}
+.name img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 25px;
+}
+.name span{
+    font-size: 20px;
+}
+.social_link{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    margin-left: 50px ;
+}
+.msg_form form{
+    width: 30%;
+}
+.msg_form form div {
+    display: flex;
+}
+.msg_form form div label {
+    margin-right: 20px;
+    font-size: 20px;
+}
+.msg_form form div textarea {
+    font-family: "Montserrat";
+    padding: 3px;
+    margin: 2px;
+    height: 70px;
+}
+.msg_form form button {
+    font-size: 18px;
+    padding: 3px;
+    font-family: "Montserrat";
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+}
+h4{
+    color: #ffe209;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+}
+.formulaire{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transform: translateY(30px);
+    padding: 15px;
+}
+.formulaire2{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transform: translateY(30px);
+    padding: 15px;
+}
+
+.register{
+    display: flex;
+    width: 60%;
+    justify-content: flex-start;
+    font-size: 20px;
+    transform: translateX(50px);
+}
+.register a{
+    text-decoration: 0;
+    margin-left: 10px;
+    color: #0066ff;
+    width: 40%;
+}
+.register p{
+    width: fit-content
+}
+.error{
+    width: 47%;
+    display: flex;
+    font-size: 25px;
+    color: #ff3131;
+}
+.golden_info p:first-child{
+    text-align: center;
+}
+/* #id_username{
+    font-family: "Montserrat";
+    border: rgba(0, 0, 0, 0.8) solid 1px;
+} */
+.errorlist {
+    font-size: 12px;
+    text-align:justify;
+    font-style: italic;
+    color: #999;
+    display: flex;
+    flex-wrap: wrap;
+}
+.errorlist {
+    text-decoration: 0;
+}
+#id_password1_helptext{
+    display: none;
+}
+footer{
+    width: 100%;
+    text-align: center;
+    background-color: #0b64dae3;
+    color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.success_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2%;
+    height: 100vh;
+}
+.success_img img{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+.success_img p{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+ a{
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+}
+.avis{
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.error-css{
+    text-align: center;
+    padding: 20px;
+}
+.error-css p{
+    margin-bottom: 10px;
+}
+.error-css a{
+    text-decoration: none;
+}
+
+.success-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2%;
+    height: 100vh;
+}
+.success-img img{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+.success-img p{
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+.success-img a{
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+}
+
+@media screen and (max-width:790px) /*pour telephone*/ {
+    .form div label, .form2 div label {
+        font-size: 28px;
+    }
+    .account_title{
+        font-size: 100px;
+    }
+    .form div input, .form2 div input {
+        font-size: 20px;
+    }
+    .register{
+        font-size: 18px;
+        width: 90%;
+    }
+    /*.formulaire2 .form div:nth-child(4) input{
+        margin-top: 15px;
+        font-size: 18px;
+    }*/
+
+    @media screen and (max-width:576px) {
+        .form div label {
+            font-size: 25px;
+        }
+        .account_title{
+            font-size: 100px;
+        }
+        .form div input {
+            font-size: 16px;
+        }
+        .register{
+            font-size: 15px;
+            width: 90%;
+        }
+        .error{
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .msg_form form div label{
+            font-size: 16px;
+            margin: 0;
+            width: fit-content;
+        }
+        .msg_form form div textarea{
+            height: 15vh;
+        }
+        @media screen and (max-width:540px){
+            .form div label {
+                font-size: 16px;
+            }
+            .account_title{
+                font-size: 80px;
+            }
+            .form div input {
+                font-size: 16px;
+            }
+            .register{
+                font-size: 15px;
+                width: 90%;
+            }
+        }
+
+    }
+}
+@media screen and (min-width:790px) and (max-width:900px){
+    .register{
+        /* font-size: 15px; */
+        width: 70%;
+        transform: translateX(100px);
+    }
+    .formulaire2 .form div:nth-child(4) input{
+        font-size: 18px;
+    }
+    .formulaire2 .form div:nth-child(4) {
+        margin-top: 10px;
+    }
+
+}
+
+@media screen and (max-width:408px) {
+    .input1,#input1{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:467px) {
+    .register{
+        width: auto;
+    }
+    .register p{
+        width: 50%;
+    }
+}
+@media screen and (max-width:585px) {
+    .logo{
+        font-size: 18px;
+    }
+}
+/* Traitement du barre deroulant */
+@media screen and (max-width:765px) { /* (765px) */
+    .links, .social_links{
+        display: none;
+    }
+    .menu_list{
+        height: 40px ;
+        width: 40px ;
+        position: relative;
+        padding: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .menu_list::after{
+        content: "";
+        height: 5px;
+        width: 100%;
+        background-color:#000;
+        position: absolute;
+        transform: translateY(-10px);
+        box-shadow: -4px 10px #000;
+        border-radius: 20px;
+        transition: .5s;
+    }
+    .menu_list::before{
+        content: "";
+        height: 5px;
+        width: 100%;
+        background-color: #000;
+        position: absolute;
+        transform: translateY(10px);
+        border-radius: 20px;
+        transition: .5s;
+    }
+    .menu_list.active::after{
+        box-shadow: 0 0 #fff;
+        transform: rotate(-135deg);
+    }
+    .menu_list.active::before{
+        transform: rotate(135deg);
+    }
+    .links.responsive{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 60px;
+        top: 10px;
+        background-color: rgba(0,0,0,0.7);
+        border-radius: 20px;
+    }
+
+    .links.responsive a{
+        width: fit-content;
+        display: block;
+        color: #fff;
+        padding: 10px;
+    }
+    .links.responsive a:hover{
+        background-color: transparent;
+
+    }
+
+
+}
+@media screen and (max-width:1030px) {
+    .msg_form{
+        display: block;
+    }
+    .msg_form form{
+        width: 100%;
+    }
+    .msg_form form div{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .social_link{
+        margin: 0;
+        margin-top: 10px;
+    }
+    .name{
+        width: 100%;
+    }
+}
+@media screen and (max-width:559px) {
+    .infos_title{
+        font-size:40px;
+    }
+    .name span{
+        display: none;
+    }
+}
+@media screen and (max-width:372px) {
+    .infos_title{
+        font-size: 30px;
+    }
+    .golden_info {
+        width: 100%;
+    }
+}

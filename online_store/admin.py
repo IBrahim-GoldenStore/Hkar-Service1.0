@@ -8,7 +8,7 @@ class ProductsAdmin(admin.ModelAdmin):
 
 @admin.register(Commande)
 class CommandeAdmin(admin.ModelAdmin):
-    list_display= ('user','number','adresse','name_and_quantity','montant','statut','date')
+    list_display= ('user','name','jeton','number','adresse','quantity','montant','details','statue','date')
 
 @admin.register(Color)
 class ColorAdmin(admin.ModelAdmin):
@@ -26,6 +26,19 @@ class CategoryAdmin(admin.ModelAdmin):
 class Livraison(admin.ModelAdmin):
     list_display= ('option',)
 
-@admin.register(Lien)
-class Lien(admin.ModelAdmin):
-    list_display= ('name','url')
+#@admin.register(Lien)
+#class Lien(admin.ModelAdmin):
+    #list_display= ('name','url')
+
+@admin.register(NosCollaborateurs)
+class Collaborateurs(admin.ModelAdmin):
+    list_display= ('nom','prenom','phone','business_name',)
+
+#@admin.register(Statue)
+#class AdminStatue(admin.ModelAdmin):
+    #list_display= ('statue',)
+
+    # a supprimer apres les essai
+@admin.register(Jeton)
+class JetonAdmin(admin.ModelAdmin):
+    list_display=[]#['user','token']

@@ -1,0 +1,11 @@
+{% include './include/header.html' %}
+    <h1 class="account_title">H.kar Service</h1>
+    <h4>Veuillez saisir votre email</h4>
+    <div class="formulaire">
+        <form method="post" class="form">
+            {% csrf_token %}
+            {{ form }}
+            <input style="border-radius:20px;" type="submit" value="Envoyer" class="input1">
+        </form>
+    </div>
+{% include './include/end.html' %}

@@ -3,15 +3,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '523219616769672');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=523219616769672&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'onlineStore/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'onlineStore/icone/sac-de-courses.png' %}" type="image/png">
+    <link rel="apple-touch-icon" href="{% static 'onlineStore/icone/sac-de-courses.png' %}">
     <title>H.kar-Service | {{article.name}}</title>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-357H1MME9W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-357H1MME9W');
+</script>
 <body>
-    
+
     <header>
-        <div class="logo">H.kar-Service</div>
+        <span></span>
+        <a style="text-decoration: none" href="{% url 'store:index' %}"><div class="logo"><span>H.kar</span>-Service</div></a>
         <div class="menu-bar"></div>
         <nav>
             <a href="{% url 'store:index' %}">Accueil</a>
@@ -20,16 +49,16 @@
                 <a href="{% url 'account:logout' %}">Déconnexion</a>
             {% else %}
                 <a href="{% url 'account:login' %}">Connexion</a>
-            {% endif %}                
+            {% endif %}
         </nav>
     </header>
 
     <section class="item-base">
 
-        <div class="item">          
+        <div class="item">
             {% if article.image %}
-            <div class="image-box">          
-                <img src="{{ article.image.url }}" alt="">
+            <div class="image-box">
+                <img style="background-color:rgba(0,0,0);" src="{{ article.image.url }}" alt="">
                 {% if  article.image1 %}
                 <img src="{{ article.image1.url }}" alt="">
                 {% endif %}
@@ -42,15 +71,23 @@
             </div>
             {% endif %}
             <div>
-                <h2 style="font-size: 30px;margin-bottom: 20px;color: #ffe100;">{{ article.name }}</h2>
-                <span>{{ article.price }} FCFA</span>
-                <p>Couleurs: {{article.color}}</p> 
+                <h2 style="font-size: 30px;margin-bottom: 20px;color: #007BFF;">{{ article.name }}</h2>
+                <span style="color: #000000;">{{ article.price }} FCFA</span>
+                {% if user.is_authenticated %}
+                    {% if token > 0 %}
+                        <p>Livraison: {{ free_offer }} {{ token }}</p>
+                    {% else %}
+                        <p>Livraison: {{ article.livraison }}</p>
+                    {% endif %}
+                {% else %}
+                    <p>Livraison: {{ article.livraison }}</p>
+                {% endif %}
                 <div class="info-box" style="margin: 5px;">
-                    <a href="{% url 'store:ajout' article.id %}">Ajouter au panier</a>{% if user.is_authenticated %}| <button class="form_btn2" style="font-size: 17px;height: fit-content;"> Acheter</button>{% endif %}
+                    <a href="{% url 'store:ajout' article.id %}">Ajouter au panier</a>| <button class="form_btn2" style="font-size: 17px;height: fit-content;"> Acheter</button>
                 </div>
             </div><hr>
-            <h3 style="margin-top: 15px;">Description</h3><br>
-            <p>{{ article.description }}.</p>
+            <h3 style="margin-top: 15px;width:100%;text-align:center;">Description</h3><br>
+            <p style="width:100%; font-size: 15px;margin:10px;">{{ article.description|safe }}.</p>
         </div>
 
         <div class="form_box">
@@ -58,10 +95,8 @@
                 {% csrf_token %}
                 {{ form }}
                 <button class="btn" type="submit" >Soumettre</button><br>
-                <input type="checkbox"  id="check" checked disabled>
-                <label for="check">Payement à la livraison(via OrangeMoney)</label>
             </form>
-        </div>   
+        </div>
     </section>
 <script src="{% static 'onlineStore/scripts.js' %}"></script>
 </body>

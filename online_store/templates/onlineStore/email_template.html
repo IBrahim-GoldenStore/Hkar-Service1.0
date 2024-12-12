@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <h1 style="width: 100%; height: fit-content; padding-top: 10px; padding-bottom: 5px; text-align: center; color: #fff; background-color: rgba(0, 0, 0, 0.9);">
+        Hkar-Service
+    </h1>
+    <main style="padding: 15px;">
+        <h3 style="font-size: 20px; color: #000;">Bonjour {{ username }};</h3>
+        <p style="width: 100%; height: fit-content; color: black; font-size:10px;">
+            Votre commande a bien été prise en compte.<br><br>
+            {% if type == 1 %}
+                Voici les détails de votre achat :<br>
+                {% for article in liste %}
+                    <br>{{ article.name }} : {{ article.price }} Fcfa<br><br>
+                {% endfor %}
+                {% if livraison %}
+                    Livraison: {{ livraison }} <br><br>
+                {% endif %}
+            {% else %}
+                Voici les détails de votre achat :<br><br>
+                {% for element in liste %}
+                    Article : {{ element.name }}<br>
+                    Prix : {{ element.price }} Fcfa<br>
+                    Quantité : {{ element.quantity }}<br><br>
+                {% endfor %}
+                <strong>Total = {{ montant }} Fcfa</strong><br><br>
+            {% endif %}
+
+            Votre commande sera traitée et expédiée dans les plus brefs délais.<br><br>
+
+            Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter :<br>
+            <strong>{{ contact }}</strong><br><br>
+
+            Merci pour votre confiance et à très bientôt sur Hkar-Service !<br><br>
+
+            L'équipe Hkar-Service.
+        </p>
+    </main>
+</body>
+</html>

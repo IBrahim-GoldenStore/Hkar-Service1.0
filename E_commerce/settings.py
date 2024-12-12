@@ -17,9 +17,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-from decouple import Config
-
-config = Config('.env')
+from decouple import config
 
 
 
@@ -27,12 +25,12 @@ config = Config('.env')
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  config.get('secret')#'django-insecure-ps4)9u2+!nv*zgparlsrhj%(k7h)$oy6#s2_a0^nv$e@1v^&i9'
+SECRET_KEY =  config('secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.hkarsevice.com']
 
 
 # Application definition
@@ -83,24 +81,13 @@ WSGI_APPLICATION = 'E_commerce.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-if DEBUG == True:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': config('name'),
-            'USER': config('user'),
-            'PASSWORDS': config('mysql_password'),
-            'HOST': config('host'),
-            'PORT': '3306',
-        }
-    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -165,11 +152,23 @@ else:
     EMAIL_PORT=587
     EMAIL_USE_TLS= True
 
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SECURE = True  # Assure que le cookie CSRF est uniquement envoyé via HTTPS
+SESSION_COOKIE_SECURE = True  # Assure que le cookie de session est uniquement envoyé via HTTPS
+SESSION_COOKIE_HTTPONLY = True
+
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-SESSION_COOKIE_AGE = 180*60
+SESSION_COOKIE_AGE = 30*24*60*60
 SESSION_SAVE_EVERY_REQUEST = True
 
 X_FRAME_OPTIONS='DENY'
 X_CONTENT_TYPE_OPTIONS='nosniff'
 SECURE_BROWSER_XSS_FILTER= True
+SECURE_HSTS_SECONDS = 31536000  # Durée en secondes (par exemple, 1 an)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Appliquer HSTS à tous les sous-domaines
+SECURE_HSTS_PRELOAD = True  # Permettre le préchargement HSTS dans les navigateurs
+
+SECURE_SSL_REDIRECT = True
+
+PASSWORD_RESET_TIMEOUT_DAYS=1

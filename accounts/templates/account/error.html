@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'account/style_account.css' %}">
+    <title>Erreur</title>
+</head>
+<body>
+    <div class="error-css">
+        <h3>Oupps....une erreur c'est produite😵‍💫</h3><br>
+        <p>Assurez-vous que vôtre email est valide!!</p>
+
+        <a href="{% url 'account:reset_password' %}">Retour</a>
+    </div>
+</body>
+</html>

@@ -16,7 +16,7 @@
                 </div>
                 <div class="item_links">
                     <a href="{% url 'store:plus' pan.id %}"><img src="{% static 'onlineStore/icone/chariot.png' %}" alt=""></a>
-                    <a href="{% url 'store:moins' pan.id %}"><img src="{% static 'onlinestore/icone/suppression.png' %}" alt=""></a>
+                    <a href="{% url 'store:moins' pan.id %}"><img src="{% static 'onlineStore/icone/suppression.png' %}" alt=""></a>
                     <p><a href="{% url 'store:supprimer' pan.id %}">Supprimer</a></p>
                 </div>
                 <br>
@@ -31,15 +31,13 @@
                 {% csrf_token %}
                 {{ form }}
                 <button class="btn" type="submit" >Soumettre</button><br>
-                <input type="checkbox"  id="check" checked disabled>
-                <label for="check">Payement à la livraison(via OrangeMoney)</label>
             </form>
-        </div>   
+        </div>
         <button class="form_btn">Effectuer la commande</button>
     {% else %}
         <p class="panier_text">Aucune panier disponible</p>
     {% endif %}
     <br>
-    <a href="{% url 'store:index' %}" class="link">Acceuil</a>
+    <a href="{% url 'store:index' %}" class="link">Accueil</a>
 </section>
 {% include './include/end.html' %}

@@ -32,7 +32,7 @@ body{
 .helptext{     /* ciblage des 'aide texte*/
     display: none;
 }
-.header{    
+.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,40 +99,222 @@ body{
     background-color: #ffea4db0;
     border-radius: 22px;
 }
-
+/*recents*/
+ #id_username_helptext,#id_password_heptext,#id_password2_heptext{
+    display: none;
+}
+.helptext{
+    font-size: 12px;
+    color:#9a28b1;
+    text-align: left;
+    margin-bottom: 2px;
+}
+.visibility-password{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.visibility-password > img{
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    align-self: start;
+    margin-top: 70px;
+}
+.visibility-password.login > img{
+    margin-top: 30px;
+}
+.form{
+    text-align: center;
+}
 .form div input{
+    margin-bottom: 15px;
     font-family: "Montserrat";
-    border: rgba(0, 0, 0, 0.8) solid 1px;
-    border-radius: 2px;
-    margin-top: 20px;
-    font-size: 25px;
+    border: #863154 solid 1px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 20px;
     text-align: center;
     padding: 3px;
+    transition: .5s;
 }
-.infos_title{
-    font-size: 60px;
-    margin-bottom: 40px;
-
+.form div input:focus{
+    border: #9a28b1 solid 1px;
+    transform:  scale(1.05);
 }
 .input1{
     font-family: "Montserrat2";
     padding: 8px;
     margin: 20px 0;
-    border-radius: 5px;
-    font-size: 20px;
-    border: rgba(0, 0, 0, 0.8) solid 1px;
+    border-radius: 10px;
+    background-color: #adf0d1;
+    font-size: 16px;
+    border: none;
     transition: .5s;
 }
-.input1:hover{
-    transform: scale(1.03);
+.formulaire2 a{
+    margin-right: 30px;
     color: #0066ff;
+    font-size: 20px;
+    text-decoration: 0;
+}
+/*recents*/
+ /* Profil.html */
+ .main-profil{
+    background: #f1f1f1;
+    height: 90vh;
+    overflow: hidden;
+ }
+.main-profil > h1{
+    text-align: center;
+    font-size: 30px;
+    color: #2C3E50;
+}
+.main-profil > div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.profil-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5%;
+    flex-direction: column;
+    gap: 20px;
+}
+.profil-elements{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.profil-elements > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.profil-elements > div p{
+    /* font-weight: bold; */
+    color: #2C3E50;
+    font-size: 18px;
+}
+.profil-elements > div span{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0px 5px;
+}
+.profil-links div{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.profil-links div a{
+    width: fit-content;
+}
+.profil-links p{
+    font-size: 20px;
+    color: #2C3E50;
+}
+.pop-up{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pop-up > div{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f3f4;
+    width: 300px;
+    height: 420px;
+    position: absolute;
+    top: 80px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.pop-up > div main{
+    margin-top: 10px;
+    height: 360px;
+    font-size: 13px;
+    color: #2C3E50;
+    /* text-align: center; */
+    font-weight: bolder;
+}
+.pop-up > div main > p{
+    margin-top: 2px;
+}
+.pop-up > div main > span{
+    color: #ff3131;
+}
+.pop-up > div > span{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #2C3E50; */
+    margin-right: 10px;
+    align-self: flex-end;
+    position: relative;
+    cursor: pointer;
+}
+.pop-up > div main > div{
+    text-align: center;
+}
+.pop-up > div main > div p{
+    color: #000000;
+}
+.pop-up > div > span::after{
+    content: '';
+    display: block;
+    width: 15px;
+    height: 2px;
+    background-color: rgba(0,0,0,0.9);
+    transform: rotate(45deg);
+    position: absolute;
+}
+.pop-up > div > span::before{
+    content: '';
+    display: block;
+    width: 15px;
+    height: 2px;
+    background-color: rgba(0,0,0,0.9);
+    transform: rotate(-45deg);
+}
+@media screen and (max-width:574px) {
+    .profil-elements{
+        flex-wrap: wrap;
+        font-size: 17px;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+    .profil-links p{
+        font-size: 16px;
+    }
+    .profil-links > div a{
+        font-size: 15px;
+    }
+}
+@media  screen and (max-width:375px) {
+    .profil-elements > div p{
+        font-size: 15px;
+    }
+}
+/*profil.html*/
+.infos_title{
+    font-size: 60px;
+    margin-bottom: 40px;
+
 }
 .form div label{
-    font-size: 30px;
+    display: none;
 }
 .account_title{
     font-size: 100px;
-    color: #ffe734;
+    color: #000000;
     text-align: center;
 }
 .golden_info span{
@@ -202,7 +384,7 @@ body{
     justify-content: center;
 }
 h4{
-    
+    color: #ffe209;
     text-align: center;
     font-size: 25px;
     margin-top: 20px;
@@ -238,12 +420,6 @@ h4{
 .register p{
     width: fit-content
 }
-.formulaire2 a{
-    margin-top: 20px;
-    color: #0066ff;
-    font-size: 30px;
-    text-decoration: 0;
-}
 .error{
     width: 47%;
     display: flex;
@@ -271,9 +447,6 @@ h4{
 #id_password1_helptext{
     display: none;
 }
-#id_password2_helptext{
-    display: none;
-}
 footer{
     width: 100%;
     text-align: center;
@@ -289,7 +462,7 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 2%; 
+    padding: 2%;
     height: 100vh;
 }
 .success_img img{
@@ -302,13 +475,12 @@ footer{
     margin-bottom: 10px;
     font-size: 18px;
 }
-.success_img a{
+ a{
     text-decoration: none;
     font-size: 18px;
     text-align: center;
     width: 100%;
 }
-
 .avis{
     margin-top: 10px;
     margin-bottom: 25px;
@@ -318,28 +490,61 @@ footer{
     width: 100%;
 }
 
+.error-css{
+    text-align: center;
+    padding: 20px;
+}
+.error-css p{
+    margin-bottom: 10px;
+}
+.error-css a{
+    text-decoration: none;
+}
+
+.success-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2%;
+    height: 100vh;
+}
+.success-img img{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+.success-img p{
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+.success-img a{
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+}
+
 @media screen and (max-width:790px) /*pour telephone*/ {
     .form div label, .form2 div label {
         font-size: 28px;
     }
     .account_title{
         font-size: 100px;
-    }    
+    }
     .form div input, .form2 div input {
         font-size: 20px;
-    }    
+    }
     .register{
         font-size: 18px;
         width: 90%;
     }
-    .formulaire2 .form div:nth-child(4) input{ 
+    .formulaire2 .form div:nth-child(4) input{
         margin-top: 15px;
         font-size: 18px;
     }
-    .formulaire2 .form div:nth-child(4) { 
-        margin-top: 20px;
-    }
-
 
     @media screen and (max-width:576px) {
         .form div label {
@@ -347,16 +552,13 @@ footer{
         }
         .account_title{
             font-size: 100px;
-        }    
+        }
         .form div input {
             font-size: 16px;
-        }    
+        }
         .register{
             font-size: 15px;
             width: 90%;
-        }
-        .formulaire2 .form div:nth-child(4) input,.formulaire2 .form div:nth-child(4) { 
-            margin-top: 15px;
         }
         .error{
             width: 100%;
@@ -373,20 +575,20 @@ footer{
         }
         @media screen and (max-width:540px){
             .form div label {
-                font-size: 20px;
+                font-size: 16px;
             }
             .account_title{
                 font-size: 80px;
-            }     
+            }
             .form div input {
                 font-size: 16px;
-            }    
+            }
             .register{
                 font-size: 15px;
                 width: 90%;
-            }    
+            }
         }
-    
+
     }
 }
 @media screen and (min-width:790px) and (max-width:900px){
@@ -398,20 +600,14 @@ footer{
     .formulaire2 .form div:nth-child(4) input{
         font-size: 18px;
     }
-    .formulaire2 .form div:nth-child(4) { 
+    .formulaire2 .form div:nth-child(4) {
         margin-top: 10px;
     }
 
 }
 
 @media screen and (max-width:408px) {
-    .form div input {
-        margin-top: 10px;
-    }
-    .form div{
-        margin-top: 10px;
-    }
-    .input1{
+    .input1,#input1{
         font-size: 15px;
     }
 }
@@ -481,7 +677,7 @@ footer{
         background-color: rgba(0,0,0,0.7);
         border-radius: 20px;
     }
-    
+
     .links.responsive a{
         width: fit-content;
         display: block;

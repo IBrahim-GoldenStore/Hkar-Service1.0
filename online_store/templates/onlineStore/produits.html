@@ -3,17 +3,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '523219616769672');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=523219616769672&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'onlineStore/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'onlineStore/icone/sac-de-courses.png' %}" type="image/png">
+    <link rel="apple-touch-icon" href="{% static 'onlineStore/icone/sac-de-courses.png' %}">
     <title>H.kar-Service | Articles</title>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-357H1MME9W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-357H1MME9W');
+</script>
 <body>
     <header>
-        <div class="logo">H.kar-Service</div>
-        <div class="menu-bar"></div>
-        <div class="search-bar">
+        <span></span>
+    <a style="text-decoration: none" href="{% url 'store:index' %}"><div class="logo"><span>H.kar</span>-Service</div></a>        <div class="menu-bar"></div>
+    <div class="search-bar">
             <form method="get" action="{% url 'store:prods' %}" class="index-form"> <!-- formulaire necessaire pour recuprerez le valeur notez qu'ici nous avons le method get -->
+                {% csrf_token %}
                 <input type="search" name="contain" placeholder="Recherche......">
                 <button type="submit"><img src="{% static 'onlineStore/icone/search.png' %}"></button>
             </form>
@@ -25,31 +54,32 @@
                 <a href="{% url 'account:logout' %}">Déconnexion</a>
             {% else %}
                 <a href="{% url 'account:login' %}">Connexion</a>
-            {% endif %}                
+            {% endif %}
         </nav>
     </header>
 
     <main>
+        <h1 style="display:flex;justify-content:space-around;margin-bottom:14px;"> Nos Articles </h1>
         {% if produit_list %}
         {% for category in category_list %}
-            <section class="trend-box">
-                <p>{{category.name}}</p>
-                <div class="trend-bar">
+            <section class="trend-box" style="padding-left: 0px;">
+                <p><a style="text-decoration:none;color:rgba(0,0,0);" href="{% url 'store:trend' category.name %}">{{category.name}}</a></p>
+                <div class="trend-bar-articles">
                     {% for produit in produit_list %}
                     {% if category.name == produit.category.name %}
-                        <div class="trend-bar-div">
-                            <a class="produit-img" href="{% url 'store:article' produit.slug %}"> <img src="{{ produit.image.url }}" alt=""> </a>
+                        <div class="trend-bar-articles-div">
+                            <a class="produit-article-img" href="{% url 'store:article' produit.slug %}"> <img src="{{ produit.image.url }}" alt="" loading='lazy'> </a>
                             <section class="trend-info">
                                 <div>
-                                    <a href="{% url 'store:article' produit.slug %}">{{ produit.name }}</a>
-                                    <span>{{ produit.price }} FCFA</span>    
+                                    <a href="{% url 'store:article' produit.slug %}">{{ produit.name|truncatechars:8}}</a>
+                                    <span>{{ produit.price }} FCFA</span>
                                 </div>
                                 <a class="panier-img" href="{% url 'store:ajout' produit.id %}"><img src="{% static 'onlineStore/icone/panier.png' %}" alt=""></a>
                             </section>
                         </div>
                     {% endif %}
                     {% endfor %}
-                </div>  
+                </div>
             </section>
         {% endfor %}
         {% else %}
@@ -57,17 +87,41 @@
         {% endif %}
 
     </main>
-    <footer>
-        Retrouvez-nous sur:
-        <div class="external-link">
-            {% for lien in liens %}
-            {%if lien %}
-                <p>{{lien.name}} : <a href="{{lien.url}}">{{lien.url|truncatechars:23}}</a></p>
-            {% endif %}
-            {% endfor %}  
+<footer>
+    <div class="main-footer-box">
+        <div class="footer-category">
+            <h3>Categorie</h3>
+            {% for category in footer_category %}
+                <a href="{% url 'store:trend' category.name %}">{{ category.name|truncatechars:10 }}</a><br>
+            {% endfor %}
         </div>
-        <a href="{% url 'account:cont' %}" style="text-align: center; color: #999;width: 100%;display: block;margin-top: 5px;">À propos de nous</a>
-    </footer>
+        <div class="article-category">
+            <h3>Article populaire</h3>
+            {% for article in footer_articles %}
+            <a href="{% url 'store:article' article.slug %}">{{ article.name|truncatechars:10 }}</a><br>
+            {% endfor %}
+        </div>
+        <div class="collaborator-box">
+            <h3> Nos Collaborateurs</h3>
+            {% for collaborator in collaborateurs %}
+                {% if collaborator.business_name %}
+                    <p> {{ collaborator.business_name }} </p>
+                {% endif %}
+            {% endfor %}
+            <a style="color: #844bc0; padding:2px;" href="mailto:hkarservice.team@gmail.com?subject=Demande%20de%20collaborations.%20">Devenir collaborateurs ?</a>
+        </div>
+        <div class="help-box">
+            <h3>À propos de nous</h3>
+            <a href="{% url 'account:cont' %}">Qui somme nous?</a>
+            <a href="mailto:hkarservice.team@gmail.com?subject=Demande%20de%20contact.%20">Nous_contacter</a>
+        </div>
+    </div>
+    <div class="another-links">
+        <a href="https://wa.me/message/WD7YLP5JJMDAG1"><img src="{% static 'onlineStore/icone/whatsapp.png' %}" alt="whatsapp"></a>
+        <a href="https://www.facebook.com/profile.php?id=100086427076007&mibextid=ZbWKwL"><img src="{% static 'onlineStore/icone/facebook (1).png' %}" alt="facebook"></a>
+        <a href="https://www.instagram.com/hkar_services?igsh=MW5xbXoxeTBuYTJjYg=="><img src="{% static 'account/icone/instagram2.png' %}" alt="instagram"></a>
+    </div>
+</footer>
 
 <script src="{% static 'onlineStore/scripts.js' %}"></script>
 </body>

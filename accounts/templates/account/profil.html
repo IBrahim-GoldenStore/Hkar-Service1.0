@@ -1,0 +1,87 @@
+{% include './include/header.html' %}
+
+    <section class="main-profil">
+        <div class="profil-links">
+            <p>Profil Hkar-Service</p>
+            <div>
+                <a href="{% url 'store:index' %}">Acceuil</a>
+                <a href="{% url 'account:logout' %}">Déconnexion</a>
+            </div>
+        </div>
+
+        <div class="profil-avatar">
+            <h1>{{ first_letter }}</h1>
+        </div>
+
+        <h1>{{ user.username }}</h1>
+
+        <div class="profil-box">
+            <div class="profil-elements">
+                <div>
+                    <p>Jeton :</p>
+                    <span>{{ user.profil.jeton }}</span>
+                </div>
+                <div>
+                    <p>Code de Parrainage :</p>
+                    <span>{{ user.profil.code }}</span>
+                </div>
+            </div>
+
+            <div class="profil-elements">
+                <div>
+                    <p>Commande en cours :</p>
+                    <span>{{ commande_en_cours.count }}</span>
+                </div>
+                <div>
+                    <p>Commamde effectuer :</p>
+                    <span>{{ commandes_effectuer }}</span>
+                </div>
+            </div>
+
+            <div class="profil-elements">
+                <div>
+                    <p>Montant du commande:</p>
+                    <span style="color: rgb(197, 47, 47);">{{ montant_commande }} Fcfa</span>
+                </div>
+            </div>
+
+            <h3>État du panier</h3>
+            <div class="profil-elements">
+                <div>
+                    <p>Nombre d'articles:</p>
+                    <span>{{ paniers.count }} artciles</span>
+                </div>
+                <div>
+                    <p>Montant actuelle:</p>
+                    <span>{{ montant_panier }} Fcfa</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div class="pop-up" id="pop-up">
+        <div>
+            <span id="set_style"></span>
+            <h3>Du nouveau sur Hkar-Service</h3>
+            <main>
+                <p>Avec notre nouvelle mise à jour</p>
+                <p>Vous disposez désormais</p><br>
+                <h3>D'un profil utilisateur:</h3>
+                <p>Suivez vos activités depuis votre compte</p><br>
+                <h3>Programme de parrainage:</h3>
+                <p>Vous disposez également des jetons et d'un code de parrainage</p>
+                <p>Gagnez des jetons à chaque Commande</p>
+                <p>ou à chaque inscription via votre code</p>
+                <p>Vous pouvez convertir vos jetons en argent</p>
+                <p>ou effectuer des achats grâce à vos jetons</p>
+                <p>N'hésitez pas à partager votre code de parrainage avec vos proches</p><br>
+                <span>Taux de conversion: 50 jetons = 2000 Fcfa</span>
+                <div>
+                    <p>Achetez en toute confiance,</p>
+                    <p>recevez avec le sourire.</p>
+                    <p>Hkar-Service</p>
+                </div>
+            </main>
+        </div>
+    </div>
+{% include './include/end.html' %}

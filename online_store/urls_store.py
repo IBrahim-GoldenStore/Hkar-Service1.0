@@ -7,6 +7,8 @@ app_name='store'
 urlpatterns = [
     path('', views.index, name='index'),
     path('nos_produits/', views.produit, name='prods'),
+    path('achat_effectuer/',views.buy,name='success'),
+    #pour ajouter des jetons automatiquement  path('jeton/', views.jeton, name='jeton'),
     # panier url
     path('panier/', views.panier, name='panier'),
     path('panier_add/<int:article_id>/',views.ajouter, name ='ajout'),

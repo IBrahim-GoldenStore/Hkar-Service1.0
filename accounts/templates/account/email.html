@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <h1 style="width: 100%; height: fit-content; padding-top: 10px; padding-bottom: 5px; text-align: center; color: #fff; background-color: rgba(0, 0, 0, 0.9);">
+        Hkar-Service
+    </h1>
+    <main style="padding: 15px;">
+        <h3 style="font-size: 20px; color: #000;">Bonjour {{ username }};</h3>
+        <p style="width: 100%; height: fit-content; color: black; font-size: 10px;">
+            Suite à votre demande de changement de mot de passe, veuillez vous rendre sur la page suivante :<br><br>
+            <a href="https://{{ domain }}{% url 'account:setpassword' uid=uid64 token=token %}">Cliquez ici!</a><br><br>
+
+            Si vous n'êtes pas à l'origine de cette demande, veuillez supprimer immédiatement cet email afin de sécuriser votre compte.<br><br>
+
+            L'équipe Hkar-Service.
+        </p>
+    </main>
+</body>
+</html>

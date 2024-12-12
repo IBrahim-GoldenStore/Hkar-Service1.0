@@ -1,14 +1,18 @@
+{% load static %}
 {% include './include/header.html' %}
 
     <h1 class="account_title">H.kar Service</h1>
     <h4>Inscrivez-vous dès maintenant</h4>
     <div class="formulaire2">
-        <form method="post" class="form">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Créer mon compte !!" class="input1">
-        </form>
-    
+        <div class="visibility-password">
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Créer mon compte !!" class="input1">
+                <!--<input type="button" value="Afficher" style="border-radius:15px; font-size:12px; margin-left:6px" id="input2" class="input1">-->
+            </form>
+            <img src="{% static 'account/icone/icone_hide.png' %}" alt="" id="visibility-sigin">
+        </div>
         <a href="{% url 'store:index' %}">Retour</a>
     </div>
 {% include './include/end.html' %}
